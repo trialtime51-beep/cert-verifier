@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+qr_*.png
+certificate_qr.png
+deploy.bat

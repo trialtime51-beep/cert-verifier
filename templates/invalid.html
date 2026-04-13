@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invalid Certificate</title>
+    <!-- Google Fonts for premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .header-section.invalid {
+            background: linear-gradient(135deg, #d32f2f 0%, #ab000d 100%);
+        }
+        .cert-id-card.invalid {
+            background: linear-gradient(90deg, #d32f2f 0%, #ab000d 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header-section invalid">
+            <div class="header-content">
+                <h1 class="verified-title">
+                    <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    Invalid Certificate<br>Not Found
+                </h1>
+                <div class="badge" style="background-color: rgba(255,0,0,0.3);">UNVERIFIED</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="cert-id-card invalid">
+                <span class="cert-label">Scanned ID</span>
+                <span class="cert-id">{{ scanned_id }}</span>
+            </div>
+
+            <div class="section-group">
+                <div class="info-card">
+                    <span class="info-value" style="color: #d32f2f; text-align: center;">Warning: The certificate ID scanned does not exist in our database. This certificate may be forged or invalid.</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-section">
+            <p>Verification Failed</p>
+        </footer>
+    </div>
+</body>
+</html>
