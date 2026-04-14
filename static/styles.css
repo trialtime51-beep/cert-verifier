@@ -200,3 +200,22 @@ body {
 .declaration-box strong {
     color: var(--primary-color);
 }
+
+/* Add this to the bottom of styles.css */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .app-container {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* Style for the button while on the webpage */
+.no-print button:hover {
+    background-color: #059669 !important;
+    transform: translateY(-1px);
+    transition: all 0.2s;
+}

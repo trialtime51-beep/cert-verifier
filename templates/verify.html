@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forage Certificate Verification</title>
-    <!-- Google Fonts for premium typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -68,8 +69,18 @@
             <div class="section-group">
                 <h2 class="section-title">Certification</h2>
                 <div class="declaration-box">
-                    This is to certify that <strong>{{ cert.student_name }}</strong> from <strong>{{ cert.university }}</strong> has successfully completed an {{ cert.course_duration }} internship on <strong>{{ cert.internship_name }}</strong> at <strong>{{ cert.company_name }}</strong> from {{ cert.start_date }} to {{ cert.end_date }}.
+                    This is to certify that <strong>{{ cert.student_name }}</strong> from <strong>{{ cert.university
+                        }}</strong> has successfully completed an {{ cert.course_duration }} internship on <strong>{{
+                        cert.internship_name }}</strong> at <strong>{{ cert.company_name }}</strong> from {{
+                    cert.start_date }} to {{ cert.end_date }}.
                 </div>
+            </div>
+
+            <div style="text-align: center; margin: 30px 0;" class="no-print">
+                <button onclick="downloadCertificate()"
+                    style="background-color: #10b981; color: white; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 90%; font-size: 16px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                    Download PDF Certificate
+                </button>
             </div>
         </main>
 
@@ -77,6 +88,25 @@
             <p>This certificate has been verified and is authentic.</p>
         </footer>
     </div>
+
+    <script>
+        function downloadCertificate() {
+            // Select the main container
+            const element = document.querySelector('.app-container');
+
+            // PDF configuration
+            const opt = {
+                margin: 0,
+                filename: 'Certificate_{{ cert.student_name }}.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 3, useCORS: true, letterRendering: true },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Execute the library: hides 'no-print' items, converts to PDF, and saves
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 
 </html>
