@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forage Certificate Verification</title>
+    <!-- Google Fonts for premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="header-section">
+            <div class="header-content">
+                <h1 class="verified-title">
+                    Valid Certificate<br>
+                </h1>
+                <div class="badge">VERIFIED</div>
+            </div>
+        </header>
+
+        {% if cert.company_logo_url %}
+        <div class="logo-banner">
+            <img src="{{ cert.company_logo_url }}" class="company-logo-main" alt="Company Logo">
+        </div>
+        {% endif %}
+
+        <main class="main-content">
+            <div class="cert-id-card">
+                <span class="cert-label">Certificate ID</span>
+                <span class="cert-id" id="display-cert-id">{{ cert.certificate_id }}</span>
+            </div>
+
+            <div class="section-group">
+                <h2 class="section-title">Student Information</h2>
+                <div class="info-card">
+                    <span class="info-label">STUDENT NAME</span>
+                    <span class="info-value">{{ cert.student_name }}</span>
+                </div>
+            </div>
+
+            <div class="section-group">
+                <h2 class="section-title">Course Details</h2>
+                <div class="info-card mb-3">
+                    <span class="info-label">DURATION</span>
+                    <span class="info-value">{{ cert.course_duration }}</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">COMPANY NAME</span>
+                    <span class="info-value">{{ cert.company_name }}</span>
+                </div>
+            </div>
+
+            <div class="section-group">
+                <h2 class="section-title">Internship Period</h2>
+                <div class="info-card mb-3">
+                    <span class="info-label">START DATE</span>
+                    <span class="info-value">{{ cert.start_date }}</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">END DATE</span>
+                    <span class="info-value">{{ cert.end_date }}</span>
+                </div>
+            </div>
+
+            <div class="section-group">
+                <h2 class="section-title">Certification</h2>
+                <div class="declaration-box">
+                    This is to certify that <strong>{{ cert.student_name }}</strong> from <strong>{{ cert.university }}</strong> has successfully completed an {{ cert.course_duration }} internship on <strong>{{ cert.internship_name }}</strong> at <strong>{{ cert.company_name }}</strong> from {{ cert.start_date }} to {{ cert.end_date }}.
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-section">
+            <p>This certificate has been verified and is authentic.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
