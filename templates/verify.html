@@ -24,7 +24,11 @@
 
         {% if cert.company_logo_url %}
         <div class="logo-banner">
+            {% if cert.company_logo_url.startswith('http') %}
             <img src="{{ cert.company_logo_url }}" class="company-logo-main" alt="Company Logo">
+            {% else %}
+            <img src="{{ url_for('static', filename=cert.company_logo_url) }}" class="company-logo-main" alt="Company Logo">
+            {% endif %}
         </div>
         {% endif %}
 
@@ -76,12 +80,11 @@
                 </div>
             </div>
 
-            <div style="text-align: center; margin: 30px 0;" class="no-print">
-                <button onclick="downloadCertificate()"
-                    style="background-color: #10b981; color: white; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; cursor: pointer; width: 90%; font-size: 16px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-                    Download PDF Certificate
+            <!-- <div class="download-container no-print">
+                <button onclick="downloadCertificate()" class="download-btn">
+                    Download Certificate PDF
                 </button>
-            </div>
+            </div> -->
         </main>
 
         <footer class="footer-section">
@@ -90,6 +93,7 @@
     </div>
 
     <script>
+        /*
         function downloadCertificate() {
             // Select the main container
             const element = document.querySelector('.app-container');
@@ -106,6 +110,7 @@
             // Execute the library: hides 'no-print' items, converts to PDF, and saves
             html2pdf().set(opt).from(element).save();
         }
+        */
     </script>
 </body>
 
