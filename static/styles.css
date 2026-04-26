@@ -213,6 +213,51 @@ body {
     }
 }
 
+/* Desktop View Enhancements */
+@media screen and (min-width: 768px) {
+    .app-container {
+        max-width: 800px;
+        border-radius: 24px;
+    }
+    .header-section {
+        padding: 50px 30px;
+    }
+    .verified-title {
+        font-size: 32px;
+    }
+    .main-content {
+        padding: 40px;
+    }
+    .section-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 35px;
+    }
+    .section-title {
+        width: 100%;
+        font-size: 18px;
+    }
+    .info-card {
+        flex: 1;
+        min-width: calc(50% - 10px);
+        margin-bottom: 0 !important;
+        padding: 18px 20px;
+    }
+    .info-value {
+        font-size: 16px;
+    }
+    .declaration-box {
+        font-size: 16px;
+        padding: 30px;
+        line-height: 1.8;
+    }
+    .cert-id {
+        font-size: 22px;
+    }
+}
+
 /* Download Button Styles */
 /* .download-container {
     text-align: center;
