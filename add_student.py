@@ -8,7 +8,7 @@ import uuid
 import qrcode
 from PIL import Image
 
-BASE_URL = "https://cert-verifier-1z6c.onrender.com"  # Live deployment URL
+BASE_URL = "https://nextern.online"  # Live deployment URL
 
 def generate_cert_id():
     """Generate a unique 16-character hex certificate ID."""
